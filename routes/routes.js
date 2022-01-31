@@ -13,8 +13,11 @@ module.exports = (app) => {
 
     router.get('/editPassword', users.edit_user);
     router.get('/clients', users.clientsAll);
+    router.post('/clients/vendedor', users.clientsVendedor);
     router.post('/users/edit', users.editUser);
     router.post('/users/delete', users.deleteUser);
+    router.post('/clients/edit', users.editClient);
+    router.post('/clients/delete', users.deleteClient);
 
     
 

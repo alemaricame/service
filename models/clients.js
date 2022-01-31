@@ -1,7 +1,6 @@
 
 const mongoose = require('mongoose');
 
-// const Schema = mongoose.Schema;
 const { Schema } = mongoose;
 
 const clientsSchema = new Schema(
@@ -11,7 +10,7 @@ const clientsSchema = new Schema(
     RFC: { type: String, required: true },
     Zona: { type: String, required: true },
     Vendedor: { type: String, required: true },
-    IdVendedor: { type: String, required: true }
+    IdVendedor:  { type: mongoose.Schema.Types.ObjectId,ref: 'users', required: true}
 },
   {
     timestamps: true
