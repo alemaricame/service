@@ -1,0 +1,37 @@
+{
+  "name": "poc-server",
+  "version": "1.0.0",
+  "description": "Servidor de implementación para el admin y la aplicacion de revista oxxo",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cool-ascii-faces": "^1.3.4",
+    "cors": "^2.8.5",
+    "cors-anywhere": "^0.4.4",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0",
+    "serve": "^11.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alemaricame/poc-server-revista.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/alemaricame/poc-server-revista/issues"
+  },
+  "homepage": "https://github.com/alemaricame/poc-server-revista#readme"
+}
