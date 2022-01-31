@@ -63,7 +63,7 @@ const corsOptions = {
 // Enable preflight requests for all routes
 app.options('*', cors(corsOptions));
 // app.set('port', 5050);
-const port = 8000;
+var port = 8000;
 
 app.listen(port, function () {
   console.log("Node server running on http://localhost:8000");
