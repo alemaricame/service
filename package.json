@@ -4,8 +4,7 @@
   "description": "Servidor de implementación para el admin y la aplicacion de revista oxxo",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
-    "build": "webpack"
+    "start": "nodemon index"
   },
   "author": "",
   "license": "ISC",
