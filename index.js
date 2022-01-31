@@ -20,7 +20,7 @@ require("./routes/routes")(app);
 const db = require("./models");
 const http = require("http");
 
-db.mongoose
+mongoose
   .connect(db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -65,7 +65,7 @@ app.options('*', cors(corsOptions));
 // app.set('port', 5050);
 var port = 8000;
 
-app.listen(8000, function () {
+app.listen(process.env.PORT || 8000, function () {
   console.log("Node server running on http://localhost:8000");
 });
 
