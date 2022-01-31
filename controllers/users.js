@@ -4,7 +4,7 @@ const clients = require("../models/clients");
 
 exports.users = async (req, res) => {
     console.log('users all')
-    users.findOne().then((data,err)=> {
+    users.find().then((data,err)=> {
         console.log(data)
         if(err){
             res.status(500).send({ success: false, message: 'Error al cargar los datos' })
