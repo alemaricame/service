@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index",
-    "build": "ng build",
-    "heroku-postbuild": "ng build --prod"
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
