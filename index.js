@@ -65,7 +65,7 @@ app.options('*', cors(corsOptions));
 // app.set('port', 5050);
 var port = 8000;
 
-app.listen(process.env.PORT || 3000, function () {
+app.listen(process.env.PORT || 8000, function () {
   console.log("Node server running on http://localhost:8000");
 });
 
