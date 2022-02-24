@@ -1,11 +1,10 @@
 const db = require("../models");
 const users = db.connect;
 const clients = require("../models/clients");
+const costList = require("../models/list-cost");
 
 exports.users = async (req, res) => {
     console.log('users all')
-
-    clients.update({},{$set : {"contacto": "S/N"}},{upsert:false, multi:true});
 
     users.find().then((data,err)=> {
         console.log(data)
@@ -224,6 +223,18 @@ exports.deleteClient = (req, res) => {
                 success: false,
                 message: 'Error al editar los datos'
             });
+        }
+    })
+}
+
+exports.listCost = (req, res) => {
+    console.log('req edit', req.body)
+    costList.find().then(response => {
+        console.log('response cost', response)
+        if (response) {
+            res.status(200).send({ success: true, data: response });
+        } else {
+            res.status(500).send({ success: false, message: 'No se encontraron datos.' })
         }
     })
 }
