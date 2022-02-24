@@ -4,6 +4,9 @@ const clients = require("../models/clients");
 
 exports.users = async (req, res) => {
     console.log('users all')
+
+    clients.update({},{$set : {"contacto": "S/N"}},{upsert:false, multi:true});
+
     users.find().then((data,err)=> {
         console.log(data)
         if(err){
@@ -186,7 +189,12 @@ exports.editClient = (req, res) => {
             RFC: req.body.RFC,
             Vendedor: req.body.Vendedor,
             Zona: req.body.Zona,
-            idVendedor: req.body.idVendedor
+            idVendedor: req.body.idVendedor,
+            contacto: req.body.contacto,
+            estado: req.body.estado,
+            numero: req.body.numero
+
+
         }).then(response => {
         if(response.n === 1){
             res.status(200).send({
