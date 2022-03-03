@@ -4,35 +4,32 @@ const clients = require("../models/clients");
 const costList = require("../models/list-cost");
 
 exports.users = async (req, res) => {
-    console.log('users all')
-
-    // users.find().then((data,err)=> {
-    //     console.log(data)
-    //     if(err){
-    //         res.status(500).send({ success: false, message: 'Error al cargar los datos' })
-    //     }else {
-    //         res.status(200).send({ success: true, data: data });
-    //     }
-    // })
-}
-
-exports.edit_user = (req, res) => {
-    console.log('req edit', req.body)
-    users.updateMany({},{$set:{'Password': 'Gahp2022'}}).then(response => {
-        console.log(response)
-        if(response.n === 1){
-            res.status(200).send({
-                success: true,
-                data: response
-            });
-        }else{
-            res.status(400).send({
-                success: false,
-                message: 'Error al editar los datos'
-            });
+    users.find().then((data,err)=> {
+        if(err){
+            res.status(500).send({ success: false, message: 'Error al cargar los datos' })
+        }else {
+            res.status(200).send({ success: true, data: data });
         }
     })
 }
+
+// exports.edit_user = (req, res) => {
+//     console.log('req edit', req.body)
+//     users.updateMany({},{$set:{'Password': 'Gahp2022'}}).then(response => {
+//         console.log(response)
+//         if(response.n === 1){
+//             res.status(200).send({
+//                 success: true,
+//                 data: response
+//             });
+//         }else{
+//             res.status(400).send({
+//                 success: false,
+//                 message: 'Error al editar los datos'
+//             });
+//         }
+//     })
+// }
 
 exports.edit_user = (req, res) => {
     console.log('req edit', req.body)
