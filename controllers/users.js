@@ -183,7 +183,8 @@ exports.editClient = (req, res) => {
             Zona: req.body.Zona,
             Contacto: req.body.Contacto,
             Estado: req.body.Estado,
-            Telefono: req.body.Telefono
+            Telefono: req.body.Telefono,
+            Correo: req.body.Correo
 
 
         }).then(response => {
@@ -232,7 +233,9 @@ exports.addClient = (req, res) => {
         Zona: req.body.Zona,
         Contacto: req.body.Contacto,
         Estado: req.body.Estado,
-        Telefono: req.body.Telefono
+        Telefono: req.body.Telefono,
+        Correo: req.body.Correo
+
     });
 
     clientData.save('clients')
