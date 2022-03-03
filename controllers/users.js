@@ -6,14 +6,14 @@ const costList = require("../models/list-cost");
 exports.users = async (req, res) => {
     console.log('users all')
 
-    users.find().then((data,err)=> {
-        console.log(data)
-        if(err){
-            res.status(500).send({ success: false, message: 'Error al cargar los datos' })
-        }else {
-            res.status(200).send({ success: true, data: data });
-        }
-    })
+    // users.find().then((data,err)=> {
+    //     console.log(data)
+    //     if(err){
+    //         res.status(500).send({ success: false, message: 'Error al cargar los datos' })
+    //     }else {
+    //         res.status(200).send({ success: true, data: data });
+    //     }
+    // })
 }
 
 exports.edit_user = (req, res) => {
