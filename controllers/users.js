@@ -116,7 +116,6 @@ exports.login = (req, res) => {
     const data_user = req.body;
     console.log('data user', data_user.num_empleado)
     clients.findOne({ no_personal: data_user.num_empleado }).then(data => {
-        console.log('data', data)
         if (data) {
             if(data.password === parseInt(data_user.password)){
                 res.status(200).send({ success: true, data: data });
@@ -133,7 +132,6 @@ exports.ingresar = (req, res) => {
     const data_user = req.body;
     console.log('data user', data_user.email)
     users.findOne({ Correo: data_user.email}).then(data => {
-        console.log('data resp', data)
         if (data) {
             if(data['Password'] === data_user.password){
                 res.status(200).send({ success: true, data: data });
@@ -150,7 +148,6 @@ exports.ingresar = (req, res) => {
 exports.clientsAll = (req, res) => {
     
     clients.find().then(data => {
-        console.log('data resp', data)
         if (data) {
             res.status(200).send({ success: true, data: data });
 
@@ -164,7 +161,6 @@ exports.clientsAll = (req, res) => {
 exports.clientsVendedor = (req, res) => {
     console.log('clientes vendedor...', req.body._id)
     clients.find({IdVendedor: req.body._id}).then(data => {
-        console.log('data resp', data)
         if (data) {
             res.status(200).send({ success: true, data: data });
 
@@ -179,16 +175,15 @@ exports.editClient = (req, res) => {
     console.log('req edit', req.body)
     clients.updateOne({_id: req.body._id},
         {
-            CLIENTE: req.body.CLIENTE,
-            DIRECCION: req.body.DIRECCION,
+            Cliente: req.body.Cliente,
+            Direccion: req.body.Direccion,
             IdVendedor: req.body.IdVendedor,
             RFC: req.body.RFC,
             Vendedor: req.body.Vendedor,
             Zona: req.body.Zona,
-            idVendedor: req.body.idVendedor,
-            contacto: req.body.contacto,
-            estado: req.body.estado,
-            numero: req.body.numero
+            Contacto: req.body.Contacto,
+            Estado: req.body.Estado,
+            Telefono: req.body.Telefono
 
 
         }).then(response => {
@@ -208,20 +203,55 @@ exports.editClient = (req, res) => {
 
 exports.deleteClient = (req, res) => {
     console.log('req edit', req.body)
-    clients.findOneAndDelete({_id: req.body._id}).then(response => {
-        console.log(response)
-        if(response.n === 1){
-            res.status(200).send({
-                success: true,
-                data: response
-            });
-        }else{
-            res.status(400).send({
-                success: false,
-                message: 'Error al editar los datos'
-            });
-        }
-    })
+    clients.findOneAndDelete({_id: req.body._id}).then((data) => {
+        console.log("resp", data);
+        res.status(200).send({
+          success: true,
+          message: "Información eliminada correctamente",
+        });
+      })
+      .catch((err) => {
+        console.log("err", err);
+        res.status(500).send({
+          message:
+            "Error al eliminar. " + err.message ||
+            "Error al eliminar.",
+        });
+      });
+}
+
+
+exports.addClient = (req, res) => {
+    console.log('req add', req.body)
+    const clientData = new clients({
+        Cliente: req.body.Cliente,
+        Direccion: req.body.Direccion,
+        IdVendedor: req.body.IdVendedor,
+        RFC: req.body.RFC,
+        Vendedor: req.body.Vendedor,
+        Zona: req.body.Zona,
+        Contacto: req.body.Contacto,
+        Estado: req.body.Estado,
+        Telefono: req.body.Telefono
+    });
+
+    clientData.save('clients')
+    .then((data) => {
+        console.log("resp", data);
+        res.status(200).send({
+          data: data,
+          success: true,
+          message: "Información guardada correctamente",
+        });
+      })
+      .catch((err) => {
+        console.log("err", err);
+        res.status(500).send({
+          message:
+            "Error al crear." + err.message ||
+            "Error al crear.",
+        });
+      });
 }
 
 exports.listCost = (req, res) => {

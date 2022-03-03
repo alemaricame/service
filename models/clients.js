@@ -9,7 +9,7 @@ const clientsSchema = new Schema(
     Direccion: { type: String, required: true },
     RFC: { type: String, required: true },
     Zona: { type: String, required: true },
-    Vendedor: { type: String, required: true },
+    Vendedor: { type: String},
     IdVendedor:  { type: mongoose.Schema.Types.ObjectId,ref: 'users', required: true},
     Contacto: { type: String},
     Telefono: { type: String},

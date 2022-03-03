@@ -18,6 +18,8 @@ module.exports = (app) => {
     router.post('/users/delete', users.deleteUser);
     router.post('/clients/edit', users.editClient);
     router.post('/clients/delete', users.deleteClient);
+    router.post('/clients/add', users.addClient);
+
     router.get('/list-cost', users.listCost);
 
     
