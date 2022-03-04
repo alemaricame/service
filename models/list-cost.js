@@ -12,7 +12,9 @@ const costListSchema = new Schema(
     servicio: { type: String, required: true },
     lugar_servicio:  { type: String},
     normas: { type: String},
-    precio_unitario: {type: Object}
+    alto: {type: Number},
+    medio: {type: Number},
+    bajo: {type: Number}
 
 },
   {
